@@ -3,7 +3,7 @@ const db = require("../../data/db-config");
 async function getById(id) {
   const user = await db("users as u")
     .where("user_id", id)
-    .select("u.user_id", "u.name_surname")
+    .select("u.user_id", "u.name")
     .first();
   return user;
 }
