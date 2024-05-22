@@ -6,16 +6,16 @@ const morgan = require("morgan");
 //const restrict = require("./middleware/restricted");
 // const postsRouter = require("../api/posts/posts-router");
 //const authRouter = require("../api/auth/auth-router");
-//const usersRouter = require("../api/users/users-router");
-//const todosRouter = require("../api/todos/todos-router");
+const usersRouter = require("../api/users/users-router");
+const booksRouter = require("../api/books/books-router");
 
 server.use(helmet());
 server.use(express.json());
 server.use(cors({ origin: "http://localhost:3000" }));
 server.use(morgan("dev"));
 
-//server.use("/api/users", usersRouter);
-//server.use("/api/todos", todosRouter);
+server.use("/users", usersRouter);
+server.use("/books", booksRouter);
 //server.use("/api/auth", authRouter);
 // server.use("/api/favorites", restrict, favRouter);
 // server.use("/api/comments", restrict, commentsRouter);

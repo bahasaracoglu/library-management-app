@@ -1,5 +1,10 @@
 const db = require("../../data/db-config");
 
+async function getAll() {
+  const users = await db("users as u").select("u.user_id", "u.name");
+  return users;
+}
+
 async function getById(id) {
   const user = await db("users as u")
     .where("user_id", id)
@@ -15,6 +20,7 @@ async function create(user) {
 }
 
 module.exports = {
+  getAll,
   getById,
   create,
 };
