@@ -23,4 +23,15 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+// creates book with name
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const bookWithId = await booksModel.getBookWithId(id);
+    res.status(200).json(bookWithId);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
