@@ -12,6 +12,17 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// creates user with name
+router.post("/", async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    await usersModel.create({ name: name });
+    res.status(201).json("");
+  } catch (error) {
+    next(error);
+  }
+});
+
 // brings user with id
 router.get(
   "/:id",

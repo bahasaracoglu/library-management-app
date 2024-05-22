@@ -13,7 +13,7 @@ exports.up = function (knex) {
     .createTable("books", (books) => {
       books.increments("book_id");
       books.string("name", 280);
-      books.integer("score").defaultTo(-1);
+      books.integer("score").defaultTo("-1");
       books.boolean("is_loaned").defaultTo(false).notNullable();
     })
     .createTable("loans", (loans) => {

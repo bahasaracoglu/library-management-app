@@ -15,8 +15,7 @@ async function getById(id) {
 
 async function create(user) {
   const [insertedUser] = await db("users as u").insert(user);
-
-  return getById(insertedUser);
+  //return getById(insertedUser);
 }
 
 module.exports = {
