@@ -28,7 +28,7 @@ exports.seed = async function (knex) {
     },
     {
       name: "I, Robot",
-      score: "5.33",
+      score: 5.33,
     },
     {
       name: "Dune",
