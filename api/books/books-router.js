@@ -1,3 +1,4 @@
+const { validateName } = require("../middlewares/validate-middleware");
 const booksModel = require("./books-model");
 
 const router = require("express").Router();
@@ -13,7 +14,7 @@ router.get("/", async (req, res, next) => {
 });
 
 // creates book with name
-router.post("/", async (req, res, next) => {
+router.post("/", validateName, async (req, res, next) => {
   try {
     const { name } = req.body;
     await booksModel.create({ name: name });

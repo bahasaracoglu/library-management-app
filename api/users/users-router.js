@@ -1,5 +1,6 @@
 const usersModel = require("./users-model");
-const usersMw = require("./users-middleware");
+const usersMw = require("../middlewares/users-middleware");
+const { validateScore } = require("../middlewares/validate-middleware");
 const router = require("express").Router();
 
 // brings all users
@@ -13,7 +14,7 @@ router.get("/", async (req, res, next) => {
 });
 
 // creates user with name
-router.post("/", async (req, res, next) => {
+router.post("/", usersMw.validateName, async (req, res, next) => {
   try {
     const { name } = req.body;
     await usersModel.create({ name: name });
@@ -51,6 +52,7 @@ router.post(
 router.post(
   "/:id/return/:book_id",
   usersMw.isUserExist,
+  validateScore,
   async (req, res, next) => {
     try {
       const user_id = req.params.id;

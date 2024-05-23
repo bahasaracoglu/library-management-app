@@ -1,4 +1,4 @@
-const usersModel = require("./users-model");
+const usersModel = require("../users/users-model");
 
 const isUserExist = async (req, res, next) => {
   try {
