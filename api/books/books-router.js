@@ -1,3 +1,4 @@
+const { isBookExist } = require("../middlewares/books-middleware");
 const { validateName } = require("../middlewares/validate-middleware");
 const booksModel = require("./books-model");
 
@@ -25,9 +26,9 @@ router.post("/", validateName, async (req, res, next) => {
 });
 
 // creates book with name
-router.get("/:id", async (req, res, next) => {
+router.get("/:book_id", isBookExist, async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = req.params.book_id;
     const bookWithId = await booksModel.getBookWithId(id);
     res.status(200).json(bookWithId);
   } catch (error) {

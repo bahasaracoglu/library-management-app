@@ -25,22 +25,27 @@ exports.seed = async function (knex) {
     {
       name: "The Hitchhiker's Guide to the Galaxy",
       score: -1,
+      is_loaned: false,
     },
     {
       name: "I, Robot",
       score: 5.33,
+      is_loaned: false,
     },
     {
       name: "Dune",
       score: -1,
+      is_loaned: false,
     },
     {
       name: "1984",
       score: -1,
+      is_loaned: false,
     },
     {
       name: "Brave New World",
       score: -1,
+      is_loaned: true,
     },
   ]);
   await knex("loans").insert([

@@ -7,7 +7,8 @@ async function getAll() {
 async function getBookWithId(id) {
   const book = await db("books as b")
     .where("book_id", id)
-    .select("b.book_id", "b.name", "b.score");
+    .select("b.book_id", "b.name", "b.score", "b.is_loaned")
+    .first();
   return book;
 }
 
