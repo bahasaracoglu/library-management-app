@@ -24,7 +24,7 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 
 ### Postman Collection
 
-You can access the Postman collection I created for the relevant case from [Library Case API Collection](Library%20Case%20API%20Collection.postman_collection).
+You can access the Postman collection I created for the relevant case from [Library Case API Collection](Library%20Case%20API%20Collection.postman_collection.json).
 This collection contains pre-defined API requests that you can use to interact with the library management system.
 
 ### Technologies Used
