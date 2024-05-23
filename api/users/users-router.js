@@ -34,4 +34,33 @@ router.get("/:id", usersMw.isUserExist, async (req, res, next) => {
   }
 });
 
+router.post(
+  "/:id/borrow/:book_id",
+  usersMw.isUserExist,
+  async (req, res, next) => {
+    try {
+      const user_id = req.params.id;
+      const book_id = req.params.book_id;
+      await usersModel.borrowBook(user_id, book_id);
+      res.status(200).json("");
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+router.post(
+  "/:id/return/:book_id",
+  usersMw.isUserExist,
+  async (req, res, next) => {
+    try {
+      const user_id = req.params.id;
+      const book_id = req.params.book_id;
+      const user_score = req.body.score;
+      await usersModel.returnBook(user_id, book_id, user_score);
+      res.status(200).json("");
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 module.exports = router;
