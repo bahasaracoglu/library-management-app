@@ -46,7 +46,7 @@ router.post(
       const user_id = req.params.id;
       const book_id = req.params.book_id;
       await usersModel.borrowBook(user_id, book_id);
-      res.status(200).json("");
+      res.sendStatus(204);
     } catch (error) {
       next(error);
     }
@@ -65,7 +65,7 @@ router.post(
       const book_id = req.params.book_id;
       const user_score = req.body.score;
       await usersModel.returnBook(user_id, book_id, user_score);
-      res.status(200).json("");
+      res.send(204).json("");
     } catch (error) {
       next(error);
     }

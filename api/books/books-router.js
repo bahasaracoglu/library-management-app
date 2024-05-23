@@ -25,12 +25,16 @@ router.post("/", validateName, async (req, res, next) => {
   }
 });
 
-// creates book with name
+// brings book with name
 router.get("/:book_id", isBookExist, async (req, res, next) => {
   try {
     const id = req.params.book_id;
     const bookWithId = await booksModel.getBookWithId(id);
-    res.status(200).json(bookWithId);
+    res.status(200).json({
+      id: bookWithId.book_id,
+      name: bookWithId.name,
+      score: bookWithId.score,
+    });
   } catch (error) {
     next(error);
   }

@@ -66,6 +66,7 @@ async function borrowBook(user_id, book_id) {
     book_id: book_id,
     loan_date: loanDate,
   });
+  await db("books").where({ book_id }).update({ is_loaned: true });
 }
 
 async function returnBook(user_id, book_id, user_score) {
@@ -90,8 +91,10 @@ async function returnBook(user_id, book_id, user_score) {
   const averageScore =
     scores.reduce((total, score) => total + score, 0) / scores.length;
 
-  // Update the book's score
-  await db("books").where("book_id", book_id).update({ score: averageScore });
+  // Update the book's score and availability
+  await db("books")
+    .where("book_id", book_id)
+    .update({ score: averageScore, is_loaned: true });
 }
 
 module.exports = {
