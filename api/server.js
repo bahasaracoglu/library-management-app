@@ -16,7 +16,6 @@ server.use("/users", usersRouter);
 server.use("/books", booksRouter);
 
 server.use((err, req, res, next) => {
-  // eslint-disable-line
   res.status(err.status || 500).json({
     message: err.message,
     stack: err.stack,

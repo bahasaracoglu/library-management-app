@@ -94,7 +94,7 @@ async function returnBook(user_id, book_id, user_score) {
   // Update the book's score and availability
   await db("books")
     .where("book_id", book_id)
-    .update({ score: averageScore, is_loaned: true });
+    .update({ score: averageScore, is_loaned: false });
 }
 
 module.exports = {
